@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "field": "Computer Science",
+    "subfields": ["Artificial Intelligence", "Data Science", "Software Engineering"],
+    "amount_of_students": 3000,
+    "campus": "A"
+  },
+  {
+    "id": 2,
+    "field": "Biomedical Engineering",
+    "subfields": ["Biomechanics", "Medical Imaging", "Tissue Engineering"],
+    "amount_of_students": 4000,
+    "campus": "B"
+  },
+  {
+    "id": 3,
+    "field": "Physics",
+    "subfields": ["Quantum Mechanics", "Astrophysics", "Condensed Matter Physics"],
+    "amount_of_students": 2000,
+    "campus": "A"
+  },
+  {
+    "id": 4,
+    "field": "Mathematics",
+    "subfields": ["Statistics", "Applied Mathematics", "Pure Mathematics"],
+    "amount_of_students": 3100,
+    "campus": "C"
+  }
+]
