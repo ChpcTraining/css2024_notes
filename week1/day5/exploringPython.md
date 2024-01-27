@@ -92,6 +92,9 @@ Which is quite a nice representation.
 
 Now we are going to look at plotting some graphs.
 
+![image](https://github.com/ChpcTraining/css2024_notes/assets/157092105/c44058a9-b289-402e-98cf-b8db81942de1)
+
+
 
 
 ### Down Sides
