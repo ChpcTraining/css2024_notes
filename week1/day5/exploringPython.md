@@ -140,6 +140,12 @@ While Jupyter Notebooks have their downsides, it's important to note that they a
 
 ## Streamlit
 
+## Other Topics
+
+### Is Python Enough?
+
 ## Review Topics
+
+
 
 ## HPC
