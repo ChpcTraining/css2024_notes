@@ -204,6 +204,72 @@ print(numpy.std(age))
 
 ### R^2
 
+Unfortunately, R-squared calculation is not implemented in numpy… so we will be doing it by hand using the following code:
+
+```
+import numpy as np
+hours = [29, 9, 10, 38, 16, 26, 50, 10, 30, 33, 43, 2, 39, 15, 44, 29, 41, 15, 24, 50]
+results = [65, 7, 8, 76, 23, 56, 100, 3, 74, 48, 73, 0, 62, 37, 74, 40, 90, 42, 58, 100]
+x = np.asarray(hours)
+y = np.asarray(results)
+sum_x = np.sum(x)
+sum_x_2 = np.sum(np.square(x))
+sum_y = np.sum(y)
+sum_y_2 = np.sum(np.square(y))
+sum_xy = np.sum(x*y)
+print(f"sum_x = {sum_x}")
+print(f"sum_x_2 = {sum_x_2}")
+print(f"sum_y = {sum_y}")
+print(f"sum_y_2 = {sum_y_2}")
+print(f"sum_xy = {sum_xy}")
+n = len(x)
+print(f"n = {n}")
+top = n*sum_xy - sum_x*sum_y
+print(f"top = {top}")
+bot_a = np.sqrt(n*sum_x_2 - np.square(sum_x))
+bot_b = np.sqrt(n*sum_y_2 - np.square(sum_y))
+bot = bot_a*bot_b
+print(f"bot = {bot}")
+R_2 = np.square(top/bot)
+print(f"R_2 = {R_2}")
+```
+
+Output:
+
+```
+sum_x = 553
+sum_x_2 = 19345
+sum_y = 1036
+sum_y_2 = 72414
+sum_xy = 36814
+n = 20
+top = 163372
+bot = 174378.40331875964
+R_2 = 0.8777480188408425
+```
+
+Practically, we should just use a Python library called sklearn that can do this for us but doing the manual approach allows us to learn more about Python. 
+
+```
+import numpy as np
+from sklearn.metrics import r2_score
+
+hours = [29, 9, 10, 38, 16, 26, 50, 10, 30, 33, 43, 2, 39, 15, 44, 29, 41, 15, 24, 50]
+results = [65, 7, 8, 76, 23, 56, 100, 3, 74, 48, 73, 0, 62, 37, 74, 40, 90, 42, 58, 100]
+
+model = np.polyfit(hours, results, 1)
+predict = np.poly1d(model)
+
+print(r2_score(results, predict(hours)))
+```
+
+Output:
+
+```
+0.8777480188408424
+```
+
+
 
 
 ## Stack Overflow
