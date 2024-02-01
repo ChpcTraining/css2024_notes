@@ -138,6 +138,74 @@ While Jupyter Notebooks have their downsides, it's important to note that they a
 
 ## VS Code
 
+## Automate the Boring Stuff
+
+## Numerical Calculations - stdev & R^2
+
+### Stdev
+
+One of the outputs we showed was the standard deviation of the age list from the excel data set. Now we can do this in Python too quite easily with a built-in function but for the purposes of learning we are going to do a manual approach since we learnt all the tools needed now to do it. To work out the population standard deviation we need to do the following:
+
+1. Calculate the mean (average) of each data set.
+2. Subtract the deviance of each piece of data by subtracting the mean from each number.
+3. Square each deviation.
+4. Add all the squared deviations.
+5. Divide the value obtained in step four by the number of items in the data set.
+6. Calculate the square root of the value obtained in step five.
+
+We have partially done this before. Let us complete the entire process:
+
+Step 1. Given the age list we first need to find the mean of the list:
+
+```
+age=[39, 25, 29, 46, 22, 35, 22, 49, 30, 40, 30]
+
+mean = sum(age)/len(age)
+
+print(mean)
+```
+
+Step 2. Now we need to subtract the mean from value in the list and square the result:
+
+We are first going to create an empty list that will store the squared differences called sq_diff_list and then we are going to create a for loop to run through each value in the age list, subtract the mean, square the result and store in the sq_diff_list variable:
+
+```
+# Create empty list
+sq_diff_list = []
+
+# Setup for loop
+for i in range(len(age)):
+    
+    # Take average from each value in age list and square outcome. Note we square use double asterisks
+    # sq_diff we are just using as a temporary variable to store the result
+    sq_diff = (age[i] - mean)**2
+    
+    # add the results to the `sq_diff_list` list 
+    sq_diff_list.append(sq_diff)
+    
+    # print the result
+    print(sq_diff)
+```
+
+Now we need to work out the mean of the sq_diff_list and square the result:
+
+```
+mean_sq_diff = sum(sq_diff_list)/len(sq_diff_list)
+print(mean_sq_diff**0.5)
+```
+
+This process was quite tedious and in practice you would not do this as there is a built-in Python function to do it as shown below:
+
+```
+import numpy
+age=[39, 25, 29, 46, 22, 35, 22, 49, 30, 40, 30]
+print(numpy.std(age))
+```
+
+### R^2
+
+
+
 ## Stack Overflow
 
 ## OfferZen
