@@ -95,8 +95,6 @@ Now we are going to look at plotting some graphs.
 ![image](https://github.com/ChpcTraining/css2024_notes/assets/157092105/c44058a9-b289-402e-98cf-b8db81942de1)
 
 
-
-
 ### Down Sides
 
 While Jupyter Notebooks are a popular and powerful tool for data analysis, scientific computing, and interactive programming in Python, there are some downsides and reasons why they might not be recommended for beginners, especially when just starting to learn Python:
@@ -136,7 +134,17 @@ Jupyter Notebooks introduce additional concepts (e.g., cells, cell types) that b
 While Jupyter Notebooks have their downsides, it's important to note that they are excellent tools for certain tasks, especially in data science and research. However, for beginners focused on learning Python programming fundamentals, starting with a more traditional script-based approach using a text editor or an integrated development environment (IDE) might provide a more straightforward and structured learning experience. As users become more comfortable with Python, they can then explore and incorporate Jupyter Notebooks into their workflow as needed.
 
 
+## GitHub
+
 ## VS Code
+
+## Stack Overflow
+
+## OfferZen
+
+## Running Python Code on a Server
+
+Bash Scripts + Python
 
 ## Streamlit
 
@@ -145,6 +153,8 @@ While Jupyter Notebooks have their downsides, it's important to note that they a
 ### Is Python Enough?
 
 ## Review Topics
+
+## Learning Resources
 
 
 
