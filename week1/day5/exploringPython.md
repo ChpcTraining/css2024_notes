@@ -94,52 +94,6 @@ Now we are going to look at plotting some graphs.
 
 ![image](https://github.com/ChpcTraining/css2024_notes/assets/157092105/c44058a9-b289-402e-98cf-b8db81942de1)
 
-
-### Down Sides
-
-While Jupyter Notebooks are a popular and powerful tool for data analysis, scientific computing, and interactive programming in Python, there are some downsides and reasons why they might not be recommended for beginners, especially when just starting to learn Python:
-
-1. Non-linear Execution:
-
-In Jupyter Notebooks, code can be executed out of order, leading to confusion for beginners. The order in which cells are executed matters, and this can make it challenging to understand the flow of the program.
-
-2. Hidden State:
-
-Variables and their values persist across cells, which can make it difficult to track the state of the program. This hidden state can be confusing for beginners who are still grasping the concept of variable scope and program flow.
-
-3. Debugging Challenges:
-
-Debugging in Jupyter Notebooks can be more challenging compared to traditional script-based environments. Beginners may find it harder to locate and fix errors, especially when dealing with non-linear execution and hidden state.
-
-4. Lack of Encapsulation:
-
-Jupyter Notebooks promote an interactive and exploratory style, but they may not encourage good programming practices such as encapsulation and modularization. Beginners might miss out on essential skills for writing clean, organized, and maintainable code.
-
-5. Dependency on Order of Execution:
-
-Rerunning cells or running cells in a different order can lead to unexpected results. This dependency on execution order can be confusing for beginners, who might expect code to behave the same way regardless of how it's executed.
-
-6. Limited Code Editing Features:
-
-While Jupyter Notebooks provide a good environment for experimenting with code, they lack some of the advanced code editing features found in Integrated Development Environments (IDEs). Beginners may benefit from features like code auto-completion, linting, and integrated debugging, which are often more robust in IDEs.
-
-7. Version Control Challenges:
-
-Version control systems (like Git) can be more challenging to use with Jupyter Notebooks compared to traditional scripts. Tracking changes in a collaborative environment can be less straightforward. Also you are not writing a Python script, its a Jupyter Notebook file in its own format.
-
-8. Steep Learning Curve:
-
-Jupyter Notebooks introduce additional concepts (e.g., cells, cell types) that beginners need to understand alongside learning Python itself. This can add to the initial learning curve and potentially hinder the learning process.
-
-While Jupyter Notebooks have their downsides, it's important to note that they are excellent tools for certain tasks, especially in data science and research. However, for beginners focused on learning Python programming fundamentals, starting with a more traditional script-based approach using a text editor or an integrated development environment (IDE) might provide a more straightforward and structured learning experience. As users become more comfortable with Python, they can then explore and incorporate Jupyter Notebooks into their workflow as needed.
-
-
-## GitHub
-
-## VS Code
-
-## Automate the Boring Stuff
-
 ## Numerical Calculations - stdev & R^2
 
 ### Stdev
@@ -253,14 +207,36 @@ Practically, we should just use a Python library called sklearn that can do this
 ```
 import numpy as np
 from sklearn.metrics import r2_score
+import matplotlib.pyplot as plt
 
+# Data
 hours = [29, 9, 10, 38, 16, 26, 50, 10, 30, 33, 43, 2, 39, 15, 44, 29, 41, 15, 24, 50]
 results = [65, 7, 8, 76, 23, 56, 100, 3, 74, 48, 73, 0, 62, 37, 74, 40, 90, 42, 58, 100]
 
+# Fit a linear regression model
 model = np.polyfit(hours, results, 1)
 predict = np.poly1d(model)
 
-print(r2_score(results, predict(hours)))
+# Calculate R-squared
+r2 = r2_score(results, predict(hours))
+print("R-squared:", r2)
+
+# Scatter plot
+plt.scatter(hours, results, label='Actual data')
+
+# Regression line plot
+plt.plot(hours, predict(hours), color='red', label='Regression line')
+
+# Labels and title
+plt.xlabel('Hours')
+plt.ylabel('Results')
+plt.title('Scatter Plot with Regression Line')
+
+# Show legend
+plt.legend()
+
+# Display the plot
+plt.show()
 ```
 
 Output:
@@ -270,26 +246,203 @@ Output:
 ```
 
 
+### Some issues with Jupyter Notebook
+
+While Jupyter Notebooks are a popular and powerful tool for data analysis, scientific computing, and interactive programming in Python, there are some downsides and reasons why they might not be recommended for beginners, especially when just starting to learn Python:
+
+In Jupyter Notebooks, code can be executed out of order, leading to confusion for beginners. The order in which cells are executed matters, and this can make it challenging to understand the flow of the program. Some other issues are variables and their values persist across cells, which can make it difficult to track the state of the program.
 
 
-## Stack Overflow
+## Automation
 
-## OfferZen
+### Python
 
-## Running Python Code on a Server
+Let us say we have 10 csv files with 2 columns each, x and y. We want to add up all the values in column y and store it in a list. Let us write a python script to do it first then in bash.
 
-Bash Scripts + Python
+Download and extract the `csv_files.zip` folder and put it in your project directory.
 
-## Streamlit
+```
+import pandas as pd
+import os
 
-## Other Topics
+# List to store the sum of 'y' column values for each file
+sum_list = []
 
-### Is Python Enough?
+# Directory containing CSV files
+directory = './csv_files/'
 
-## Review Topics
+# Loop through each CSV file in the directory
+for filename in os.listdir(directory):
+    print(f"Processing...Filename = {filename}")
+    if filename.endswith('.csv'):
+        file_path = os.path.join(directory, filename)
+        
+        
+        # Read the CSV file using pandas
+        df = pd.read_csv(file_path)
+        
+        # Calculate the sum of 'y' column and append to the list
+        total_sum = df['y'].sum()
+        sum_list.append(total_sum)
 
-## Learning Resources
+# Print the list of sums
+print("Sum of 'y' column values for each file:", sum_list)
+
+```
+
+Output:
+
+```
+Processing...Filename = file_1.csv
+Processing...Filename = file_10.csv
+Processing...Filename = file_2.csv
+Processing...Filename = file_3.csv
+Processing...Filename = file_4.csv
+Processing...Filename = file_5.csv
+Processing...Filename = file_6.csv
+Processing...Filename = file_7.csv
+Processing...Filename = file_8.csv
+Processing...Filename = file_9.csv
+Processing...Filename = read_csv.sh
+Sum of 'y' column values for each file: [4945, 5029, 5400, 4753, 5248, 4860, 5084, 49
+79, 5581, 5217]
+```
+
+### Bash
+
+Doing the same with a bash script:
+
+```
+#!/bin/bash
+
+# Directory containing CSV files
+directory='csv_files/'
+#directory='/c/Users/BBarsch.CSIR/css2024_day03/csv_files'
+
+# List to store the sum of 'y' column values for each file
+sum_list=()
+
+# Loop through each CSV file in the directory
+for filename in "$directory"/*.csv; do
+    if [ -f "$filename" ]; then
+        # Use awk to sum the 'y' column values
+        echo $filename
+        total_sum=$(awk -F',' 'NR > 1 {sum += $2} END {print sum}' "$filename")
+
+        # Append the sum to the list
+        sum_list+=("$total_sum")
+    fi
+done
+
+# Print the list of sums
+echo "Sum of 'y' column values for each file: ${sum_list[@]}"
+
+```
+
+Output:
+
+```
+csv_files//file_1.csv
+csv_files//file_10.csv
+csv_files//file_2.csv
+csv_files//file_3.csv
+csv_files//file_4.csv
+csv_files//file_5.csv
+csv_files//file_6.csv
+csv_files//file_7.csv
+csv_files//file_8.csv
+csv_files//file_9.csv
+Sum of 'y' column values for each file: 4945 5029 5400 4753 5248 4860 5084 4979 5581 5217
+
+```
+
+### Bash with Python
+
+Any time you get access to a web server your access will most likey be in some format of terminal - most likely a Bash terminal. While Bash is quite useful and you can do many things with it, it is quite limited to the functionality of Python and what Pandas can do. Many times you would manage your files with Bash but run a Python script to do the processing of it. 
+
+The script below combines the two codes we did before.
+
+```
+#!/bin/bash
+
+# This is a comment so the terminal will ignore this line
+# ... you can write anything here
+
+echo "Process files"
+
+winpty python read_csv_files.py
+```
+
+Output:
+
+```
+$ ./run_python.sh
+Process files
+Processing...Filename = file_1.csv
+Processing...Filename = file_10.csv
+Processing...Filename = file_2.csv
+Processing...Filename = file_3.csv
+Processing...Filename = file_4.csv
+Processing...Filename = file_5.csv
+Processing...Filename = file_6.csv
+Processing...Filename = file_7.csv
+Processing...Filename = file_8.csv
+Processing...Filename = file_9.csv
+Sum of 'y' column values for each file: [4945, 5029, 5400, 4753, 5248, 4860, 5084, 4979, 5581, 5217]
+
+```
+
+This is a very simple calculation, imagine you had a lot more data and more complete problems to solve...if so then a supercomputer is the way to go! Remember all the code we have learnt up to now is sequential. Things are done one after the other. If we distribute that work load it can be done quicker.
+
+## Pandas Profiling:
+
+Open Anaconda Prompt and input the following:
+
+1. `conda create --name eda`
+2. `conda activate eda`
+3. `conda install conda-forge::ydata-profiling`
+4. `jupyter notebook`
+
+Code:
+
+```
+import numpy as np
+import pandas as pd
+from ydata_profiling import ProfileReport
+
+df = pd.DataFrame(np.random.rand(100, 5), columns=["a", "b", "c", "d", "e"])
+
+profile = ProfileReport(df, title="Pandas Profiling Report")
+
+profile
+
+```
+
+
+## Resources
+
+Github Desktop
+
+https://survey.stackoverflow.co/2023/#technology
+
+https://automatetheboringstuff.com/
+
+https://www.offerzen.com/reports/software-developer-south-africa
+
+https://streamlit.io/
+
+https://pypi.org/project/pygwalker/
+
+https://openrefine.org/
+
+https://www.kaggle.com/
+
+"Kaggle is an online community platform for data scientists and machine learning enthusiasts. Kaggle allows users to collaborate with other users, find and publish datasets, use GPU integrated notebooks, and compete with other data scientists to solve data science challenges."
+
+https://www.datacamp.com/courses/intro-to-python-for-data-science
 
 
 
-## HPC
+## CHPC Winter School
+
+https://events.chpc.ac.za/event/123/
