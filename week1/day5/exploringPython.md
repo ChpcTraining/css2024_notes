@@ -252,6 +252,12 @@ While Jupyter Notebooks are a popular and powerful tool for data analysis, scien
 
 In Jupyter Notebooks, code can be executed out of order, leading to confusion for beginners. The order in which cells are executed matters, and this can make it challenging to understand the flow of the program. Some other issues are variables and their values persist across cells, which can make it difficult to track the state of the program.
 
+!!! NB if you are opening up someone leses notebook for the first time, make sure you "Run All" cells first:
+
+![image](https://github.com/ChpcTraining/css2024_notes/assets/157092105/aba846e5-897e-4395-bf8d-a0c0cea9eed4)
+
+Otherwise when you try to run cells you may get, "... not defined" !!!
+
 
 ## Automation
 
