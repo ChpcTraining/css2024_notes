@@ -45,9 +45,9 @@ Besides the File Browser on the left, you will be presented with a number of dif
 - And more...!
 
 
-#### Notebooks
+### Real-World example
 
-Let's continue getting comfortable with the most common component -- Notebooks. Using a familiar package, let's explore some data available on the web:
+Using a now familiar package, let's explore some real-world data available on the web:
 
 ```python
 import pandas as pd
