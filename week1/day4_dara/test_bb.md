@@ -19,7 +19,7 @@ df = pd.read_csv("data_02/country_data_index.csv")
 import pandas as pd
 
 df = pd.read_csv("data_02/country_data_index.csv")
-
+```
 
 # JupyterLab
 
