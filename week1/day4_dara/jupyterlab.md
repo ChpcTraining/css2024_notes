@@ -6,7 +6,7 @@ As an alternative, we will cover the basics of using the JupyterLab interface, h
 
 JupyterLab can be started via the main menu of the Anaconda Navigator:
 <div>
-<img src="./jupyter_lab.png" width=300 style="display: block; margin: auto;" />
+<img src="./images/jupyter_lab.png" width=300 style="display: block; margin: auto;" />
 </div>
 
 which will automatically open up a webpage in your local web browser, at usually the following URL: `http://localhost:8888/lab/tree`. 
@@ -15,7 +15,7 @@ which will automatically open up a webpage in your local web browser, at usually
 
 #### Main menu (launcher screen)
 <div>
-    <img src="./jupyterlab_main_view.png" width=800 style="display: block; margin: auto;" />
+    <img src="./images/jupyterlab_main_view.png" width=800 style="display: block; margin: auto;" />
 </div>
 
 Besides the File Browser on the left, you will be presented with a number of different components that you may start up:
@@ -33,7 +33,7 @@ Besides the File Browser on the left, you will be presented with a number of dif
 - Custom (split) views
 
   <div>
-    <img src="./jupyterlab_layout.png" width=800 style="display: block; margin: auto;" />
+    <img src="./images/jupyterlab_layout.png" width=800 style="display: block; margin: auto;" />
 </div>
 
 - Developing markdown content
