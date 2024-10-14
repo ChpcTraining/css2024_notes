@@ -1,4 +1,4 @@
-# Extract
+# Extract 1
 
 For this lesson, extract the zipped folder "data_02.zip" from "Week 1: Day 2", and place the folder in your project directory.
 
@@ -29,8 +29,10 @@ As an alternative, we will cover the basics of using the JupyterLab interface, h
 
 JupyterLab can be started via the main menu of the Anaconda Navigator:
 <div>
-<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/blob/main/week1/day4_dara/images/jupyter_lab.png" width=300 style="display: block; margin: auto;" />
+<img src="https://github.com/ChpcTraining/css2024_notes/blob/main/week1/day4_dara/images/jupyter_lab.png?raw=true" width=300 style="display: block; margin: auto;" />
 </div>
+
+https://github.com/ChpcTraining/css2024_notes/blob/main/week1/day4_dara/images/jupyter_lab.png?raw=true
 
 which will automatically open up a webpage in your local web browser, at usually the following URL: `http://localhost:8888/lab/tree`. 
 
