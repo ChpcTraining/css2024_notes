@@ -1,3 +1,26 @@
+# Extract
+
+For this lesson, extract the zipped folder "data_02.zip" from "Week 1: Day 2", and place the folder in your project directory.
+
+## Different File Locations
+
+### Local files
+
+```
+import pandas as pd
+
+df = pd.read_csv("data_02/country_data_index.csv")
+
+```
+
+### Files in a different location
+
+```
+import pandas as pd
+
+df = pd.read_csv("data_02/country_data_index.csv")
+
+
 # JupyterLab
 
 Up to now, your workflow relied on the Spyder IDE, in which you executed Python code interactively within the console (effectively "IPython"), or non-interactively via Python scripts. 
