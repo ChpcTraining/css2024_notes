@@ -160,16 +160,31 @@ df_teq_vs_period_final_clean
 53	Wolf 1069 b	250	15.6
 54	Wolf 1061c	271	17.9
 ```
-Then, let's convert each column to a numpy array and plot various relationships:
+Then, let's convert each column to a numpy array:
 ```python
+import numpy as np
 teq = df_teq_vs_period_final_clean["Teq (K)"].to_numpy().astype(float)
 period = df_teq_vs_period_final_clean["Period (days)"].to_numpy().astype(float)
+```
+and plot various relationships:
+```python
+import matplotlib.pyplot as plt
+plt.xlabel("Period (days)")
+plt.ylabel("Teq (K)")
+plt.title("Exoplanets in the habitable zone")
 plt.scatter(period, teq)
-
+plt.xlabel("Period (days)")
+plt.ylabel("Count")
+plt.title("Exoplanets in the habitable zone")
 plt.hist(period)
-
+plt.xlabel("Teq (K)")
+plt.ylabel("Count")
+plt.title("Exoplanets in the habitable zone")
 plt.hist(teq)
 ```
+||||
+-- | -- | -- 
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/scatter_period_teq.png" width=350>| <img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/histogram_period.png" width=350>| <img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/histogram_teq.png" width=350>
 
 We may want to export our cleaned-up dataset to say a csv file:
 ```python
