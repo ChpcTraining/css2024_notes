@@ -27,27 +27,47 @@ Besides the File Browser on the left, you will be presented with a number of dif
 6. Python File
 7. Show Contextual Help
 
-#### Key reasons for using JupyterLab over Spyder
+#### Some key reasons for using JupyterLab over Spyder
 - Notebooks offer data scientists arguably a more convenient and interactive way of working on their datasets within not just the Python framework, but also R and others.
   
 - Custom (split) views
 
+  
+  e.g.
   <div>
     <img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/jupyterlab_layout.png" width=800 style="display: block; margin: auto;" />
 </div>
 
 - Developing markdown content
   
-- Multiple independent kernels, each with own Console Editors/Output Views
+- Multiple independent kernels, each with own Console Editors/Cell Output Views
 
 - Built-in rendering for e.g. CSV, image and even PDF files.
 
 - And more...!
 
 
-### Real-World example
+#### A quick tour of notebooks
+Notebooks essentially combine the features of scripting with that of the console: lines of code can be grouped into individual blocks called "cells" that can be executed/manipulated in any desired order. For an indvidual cell, we can click on it and use `Shift + Enter` to execute. Alternatively, to execute all cells in an orderly fashion, we can use the "Run All" option from the "Run" menu dropdown.
 
-Using a now familiar package, let's explore some real-world data available on the web:
+Instead of adding code comments in the usual way (i.e. lines beginning with `#`), we can can use Markdown formatted cells (notice that the headings we create allow cells below them to collapse!).
+
+<div>
+    <img src="./images/first_notebook.png" width=500 style="display: block; margin: auto;" />
+</div>
+
+
+A useful feature that we listed above is that of Cell Output Views -- this allows one to keep a reference of some desired output always at hand. To create such a view for the output of a specific cell block, right click on the cell and click on "Create New View For Cell Output":
+|||
+-- | --
+<img src="./images/output_views_part1.png" width=450>| <img src="./images/output_views_part2.png" width=400>
+
+This may be quite handy in the beginning when exploring data, since it avoids the need to keep scrolling up to view such content generated previously. Note though that whenever that particular cell block is re-run, if the output changes then so will that in the output view.
+
+
+### Pandas example
+
+Using a package you should now be quite familiar with, let's grab some real-world data available on the web -- in this case a table from Wikipedia that we can import into a Pandas dataframe directly:
 
 ```python
 import pandas as pd
@@ -73,10 +93,32 @@ The above should produce the following output:
 66	Wolf 1061c	Wolf 1061	M3V	≥3.41	~1.60	—	1.30	271	17.9	13.8	[1]
 ```
 
-Let's say we made some edits to our Pandas DataFrame, and would like to export this to a csv file:
+You will notice that the data needs a bit of cleaning (e.g. some incomplete/null values, and some are only providing approximate/bounded values). Just as a quick demonstration, let's consider the columns `Teq` and `Period` only, and perform a cleanup:
 ```python
-df.to_csv('exoplanets.csv', index = True)
+df_teq_vs_period_cleaned_nan = df[["Object", "Teq (K)", "Period (days)"]].dropna()
+df_teq_vs_period_cleaned_teq = df_teq_vs_period_cleaned_nan[~df_teq_vs_period_cleaned_nan['Teq (K)'].isin(['214 [9]', '256+61 −17', '~280'])]
+df_teq_vs_period_final_clean = df_teq_vs_period_cleaned_teq[~df_teq_vs_period_cleaned_teq['Period (days)'].isin(['12.76144±0.00006'])].reset_index(drop=True)
+df_teq_vs_period_final_clean
+```
+Then, let's convert each column to a numpy array and plot various relationships:
+```python
+teq = df_teq_vs_period_final_clean["Teq (K)"].to_numpy().astype(float)
+period = df_teq_vs_period_final_clean["Period (days)"].to_numpy().astype(float)
+plt.scatter(period, teeq)
+
+plt.hist(period)
+
+plt.hist(teq)
 ```
 
-We can also easily open the saved csv file within JupyterLab, which will provide a very nice formatted view of the contents.
+We may want to export our cleaned-up dataset to say a csv file:
+```python
+df_teq_vs_period_final_clean.to_csv('exoplanet_cleaned_teq_vs_period.csv', index = True)
+```
+
+We can at anytime open the saved csv file within JupyterLab, which will provide a very nice formatted view of the contents.
+
+Finally, let's apply some final touches to our notebook that will not only benefit us when revisiting it, but also be helpful to others who you might want to share it with.
+
+
 
