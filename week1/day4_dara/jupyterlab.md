@@ -53,14 +53,14 @@ Notebooks essentially combine the features of scripting with that of the console
 Instead of adding code comments in the usual way (i.e. lines beginning with `#`), we can can use Markdown formatted cells (notice that the headings we create allow cells below them to collapse!).
 
 <div>
-    <img src="./images/first_notebook.png" width=500 style="display: block; margin: auto;" />
+    <img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/first_notebook.png" width=500 style="display: block; margin: auto;" />
 </div>
 
 
 A useful feature that we listed above is that of Cell Output Views -- this allows one to keep a reference of some desired output always at hand. To create such a view for the output of a specific cell block, right click on the cell and click on "Create New View For Cell Output":
 |||
 -- | --
-<img src="./images/output_views_part1.png" width=450>| <img src="./images/output_views_part2.png" width=400>
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/output_views_part1.png" width=450>| <img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/output_views_part2.png" width=400>
 
 This may be quite handy in the beginning when exploring data, since it avoids the need to keep scrolling up to view such content generated previously. Note though that whenever that particular cell block is re-run, if the output changes then so will that in the output view.
 
