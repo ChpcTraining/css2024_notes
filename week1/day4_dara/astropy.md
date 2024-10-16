@@ -80,7 +80,7 @@ Depending on the dynamic range involved, it might be better to visualise things 
 plt.hist(image_data.flatten(), bins=50)
 ```
 <div>
-<img src="./images/flattened_horsehead_histogram.png" width=500 style="display: block; margin: auto;" />
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/flattened_horsehead_histogram.png" width=500 style="display: block; margin: auto;" />
 </div>
 From this it is evident that the distribution of pixels is skewed towards the dimmer end. We can enhance the original image if we consider a log scaling:
 
@@ -92,7 +92,7 @@ ax.set_xticks(np.log(xticks))
 ax.set_xticklabels(xticks)
 ```
 <div>
-<img src="./images/flattened_horsehead_histogram_logscale.png" width=500 style="display: block; margin: auto;" />
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/flattened_horsehead_histogram_logscale.png" width=500 style="display: block; margin: auto;" />
 </div>
 which effectively balances out/normalises the pixel values. Finally, let's view the original image in this logarithmic scale:
 
@@ -102,5 +102,5 @@ cbar = plt.colorbar(ticks=[5.e3,1.e4,2.e4])
 cbar.ax.set_yticklabels(['5,000','10,000','20,000'])
 ```
 <div>
-<img src="./images/horsehead_fits_image_logscale.png" width=500 style="display: block; margin: auto;" />
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/horsehead_fits_image_logscale.png" width=500 style="display: block; margin: auto;" />
 </div>
