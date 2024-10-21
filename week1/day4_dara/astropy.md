@@ -147,6 +147,10 @@ Something like the following:
 plt.imshow(final_image, cmap='gray', vmin=2e3, vmax=3e3)
 plt.colorbar()
 ```
+<div>
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/m13_stacked.png" width=500 style="display: block; margin: auto;" />
+</div>
+
 Finally, to end of this subsection, let's write our stacked image out to its own FITS file:
 ```python
 outfile = 'stacked_M13.fits'
