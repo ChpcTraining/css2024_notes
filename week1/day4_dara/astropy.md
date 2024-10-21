@@ -104,3 +104,61 @@ cbar.ax.set_yticklabels(['5,000','10,000','20,000'])
 <div>
 <img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/horsehead_fits_image_logscale.png" width=500 style="display: block; margin: auto;" />
 </div>
+
+Keeping with the theme of image enhancement, let's look at a more practical example of how this is typically done in Astronomy, through a technique called stacking. Stacking performs a mathematical addition of image pixels in order to improve the overall signal to noise ratio. Switching to a completely new set of observations, let's load in 5 images taken of the M13 globular cluster:
+```python
+num_m13_images = 5
+base_url = 'http://data.astropy.org/tutorials/FITS-images/M13_blue_{0:04d}.fits'
+image_list = [download_file(base_url.format(n), cache=True)
+              for n in range(1, num_m13_images+1)]
+image_concat = [fits.getdata(image) for image in image_list]
+```
+Next, let's plot each raw image:
+```python
+fig, ax = plt.subplots(nrows=3, ncols=2)
+ax = ax.ravel()
+for k in range(len(image_concat)):
+    ax[k].imshow(image_concat[k], cmap='gray')
+    ax[k].colorbar()
+    ax[k].set_title("Image #{}".format(k+1))
+
+fig.delaxes(ax[num_m13_images])
+fig.tight_layout()
+```
+
+<div>
+<img src="./images/m13_raw_images.png" width=500 style="display: block; margin: auto;" />
+</div>
+
+The first thing you'll notice is the differences in overall color scales between the images. This is ultimately something we won't worry about too much here, but keep in mind that image calibration is quite a crucial part of the Astronomical image processing. So, just to demonstrate the idea of stacking, let's perform the image addition in the most straight-forward way:
+```python
+final_image = np.sum(image_concat, axis=0)
+```
+Since we won't actually see much of an improvement visually, let's first check the resulting histogram to decide on an appropriate color scale to work with:
+```python
+plt.hist(final_image.flatten(), bins='auto')
+```
+<div>
+<img src="./images/histogram_m13_stacked.png" width=500 style="display: block; margin: auto;" />
+</div>
+
+Something like the following:
+```python
+plt.imshow(final_image, cmap='gray', vmin=2e3, vmax=3e3)
+plt.colorbar()
+```
+Finally, to end of this subsection, let's write our stacked image out to its own FITS file:
+```python
+outfile = 'stacked_M13.fits'
+hdu = fits.PrimaryHDU(final_image)
+hdu.writeto(outfile, overwrite=True)
+```
+
+### Fitting models to data
+
+**Learning Goals:**
+1. Use basic models in astropy.modeling
+2. Learn common functions to fit
+3. Generate a quick fit to data
+4. Plot the model with the data
+5. Compare different models and fitters
