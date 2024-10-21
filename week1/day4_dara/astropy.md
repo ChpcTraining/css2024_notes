@@ -127,7 +127,7 @@ fig.tight_layout()
 ```
 
 <div>
-<img src="./images/m13_raw_images.png" width=500 style="display: block; margin: auto;" />
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/m13_raw_images.png" width=500 style="display: block; margin: auto;" />
 </div>
 
 The first thing you'll notice is the differences in overall color scales between the images. This is ultimately something we won't worry about too much here, but keep in mind that image calibration is quite a crucial part of the Astronomical image processing. So, just to demonstrate the idea of stacking, let's perform the image addition in the most straight-forward way:
@@ -139,7 +139,7 @@ Since we won't actually see much of an improvement visually, let's first check t
 plt.hist(final_image.flatten(), bins='auto')
 ```
 <div>
-<img src="./images/histogram_m13_stacked.png" width=500 style="display: block; margin: auto;" />
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/histogram_m13_stacked.png" width=500 style="display: block; margin: auto;" />
 </div>
 
 Something like the following:
