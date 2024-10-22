@@ -161,8 +161,70 @@ hdu.writeto(outfile, overwrite=True)
 ### Fitting models to data
 
 **Learning Goals:**
-1. Use basic models in astropy.modeling
-2. Learn common functions to fit
-3. Generate a quick fit to data
+1. Generate synthetic data (using basic models in astropy.modeling)
+2. Use common functions to fit
+3. Perform a quick fit to data
 4. Plot the model with the data
 5. Compare different models and fitters
+
+#### E.g. a straight line 
+```python
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+from astropy.modeling import models, fitting, polynomial
+```
+
+First, let's generate synthetic data, and visualise it:
+```python
+# define a model for a line
+line_orig = models.Linear1D(slope=1.0, intercept=math.pi)
+# generate x, y data non-uniformly spaced in x
+# add noise to y measurements
+npts = 30
+rng = np.random.default_rng(5)
+x = rng.uniform(0.0, 10.0, npts)
+y = line_orig(x)
+y_diff = rng.normal(0.0, 2.5, npts)
+y_tot = y + y_diff
+y_err = np.sqrt(np.abs(y_diff))
+plt.errorbar(x,y_tot,y_err,fmt='k.')
+```
+<div>
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/synthetic_data_straight_line.png" width=500 style="display: block; margin: auto;" />
+</div>
+
+Next, we initialise an appropriate fitter and model that we think is best to use:
+```python
+# initialize a linear fitter
+fit = fitting.LinearLSQFitter()
+# initialize a linear model
+line_init = models.Linear1D()
+```
+
+Finally, we can perform our fit to the data, check the resulting model parameters and visualise the result:
+```python
+# fit the data with the fitter
+fitted_line = fit(line_init, x, y_tot,  weights=1.0/y_err)
+print(fitted_line)
+# plot the model
+plt.figure()
+plt.errorbar(x,y_tot,y_err,fmt='b.', label='Data')
+plt.plot(x, fitted_line(x), 'k-', label='Fitted Model')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend(loc='upper left')
+```
+```python
+Model: Linear1D
+Inputs: ('x',)
+Outputs: ('y',)
+Model set size: 1
+Parameters:
+          slope           intercept    
+    ----------------- -----------------
+    1.027343604331532 2.935010008085948
+```
+<div>
+<img src="https://raw.githubusercontent.com/ChpcTraining/css2024_notes/main/week1/day4_dara/images/fit_straight_line.png" width=500 style="display: block; margin: auto;" />
+</div>
