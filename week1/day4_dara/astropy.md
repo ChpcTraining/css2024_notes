@@ -162,10 +162,9 @@ hdu.writeto(outfile, overwrite=True)
 
 **Learning Goals:**
 1. Generate synthetic data (using basic models in astropy.modeling)
-2. Use common functions to fit
+2. Learn common functions to fit
 3. Perform a quick fit to data
 4. Plot the model with the data
-5. Compare different models and fitters
 
 #### E.g. a straight line 
 ```python
