@@ -8,9 +8,11 @@
 
 **Learning Goals:**
 1. Open FITS files and load image data
-2. Make a 2D histogram with image data
-3. Stack several images into a single image
-4. Write image data to a FITS file
+2. Learn the structure of FITS files
+3. Visualise the image data
+4. Make a histogram of the image data
+5. Stack several images into a single image
+6. Write image data to a FITS file
 
 Firstly, import the required modules:
 ```python
