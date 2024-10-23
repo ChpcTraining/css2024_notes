@@ -12,6 +12,7 @@
 3. Stack several images into a single image
 4. Write image data to a FITS file
 
+
 Firstly, import the required modules:
 ```python
 from astropy.io import fits
