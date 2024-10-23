@@ -59,7 +59,7 @@ def update_canvas_page(url, page_name):
 
 # Example usage:
 if __name__ == "__main__":
-    url_input = "https://raw.githubusercontent.com/ChpcTraining/css2024_notes/refs/heads/main/week1/day4_dara/astropy.md"
-    page_name_input = "4-astropy"
+    url_input = "https://raw.githubusercontent.com/ChpcTraining/css2024_notes/refs/heads/main/week1/day3/3.radio_freq.md"
+    page_name_input = "3-radio-frequency-example"
     update_canvas_page(url_input, page_name_input)
 
