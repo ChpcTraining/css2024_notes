@@ -7,7 +7,6 @@ Streamlit bridges the gap between technical expertise and usability, making data
 
 In this guide we will help you through setting up and using Streamlit, an amazing Python library that makes building interactive web apps easy and fun. Streamlit is especially great for STEM researchers like you, as it lets you turn your data and scripts into shareable, user-friendly apps without requiring extensive knowledge of web development.
 
-1. Setting Up Streamlit Locally Using Conda
 First, let’s talk about how to get Streamlit running on your local machine with Conda. Conda is a package manager that helps us create isolated environments for different projects, ensuring compatibility between dependencies. Here’s how we’ll get started:
 
 In your conda terminal install streamlit:
