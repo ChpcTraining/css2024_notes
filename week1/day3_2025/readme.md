@@ -1,39 +1,22 @@
-# EDA / Data Analysis and Visualizations - Streamlit
+# Overview
 
-Why Use Streamlit for Exploratory Data Analysis and Sharing Research?
 Streamlit is an excellent tool for performing Exploratory Data Analysis (EDA) and creating interactive visualizations. Its simplicity allows researchers to quickly build applications to explore datasets, visualize trends, and gain insights without extensive front-end development experience. Moreover, Streamlit's ability to share apps with others by deploying them online ensures that research and analysis become actionable and accessible to collaborators and stakeholders. Whether it’s building interactive research dashboards, creating tools for students to learn STEM concepts, or simplifying workflows for common tasks, 
 Streamlit bridges the gap between technical expertise and usability, making data-driven tasks easily shareable and engaging.
 
-# Code Along
+# Getting Started
 
-Introduction to Streamlit for STEM Researchers
-Hi everyone! Today, I’ll guide you through setting up and using Streamlit, an amazing Python library that makes building interactive web apps easy and fun. Streamlit is especially great for STEM researchers like you, as it lets you turn your data and scripts into shareable, user-friendly apps without requiring extensive knowledge of web development.
+In this guide we will help you through setting up and using Streamlit, an amazing Python library that makes building interactive web apps easy and fun. Streamlit is especially great for STEM researchers like you, as it lets you turn your data and scripts into shareable, user-friendly apps without requiring extensive knowledge of web development.
 
 1. Setting Up Streamlit Locally Using Conda
 First, let’s talk about how to get Streamlit running on your local machine with Conda. Conda is a package manager that helps us create isolated environments for different projects, ensuring compatibility between dependencies. Here’s how we’ll get started:
 
-Create a Conda Environment
-I always recommend creating a new environment for each project. Run this command:
-
-```
-conda create -n streamlit_env python=3.9
-```
-
-Activate the Environment
-Once the environment is created, activate it using:
-
-```
-conda activate streamlit_env
-```
-
-This switches your shell to the new environment, isolating any changes we make.
-
-Install Streamlit
-With the environment activated, we install Streamlit:
+In your conda terminal install streamlit:
 
 ```
 pip install streamlit
 ```
+
+If you wish to install it via a separate conda environment you can.
 
 Although Conda manages environments, Streamlit itself is installed via pip because it’s not in the Conda repositories.
 
@@ -46,18 +29,31 @@ streamlit hello
 
 This launches a sample Streamlit app in your default browser. If it works, you’re ready to dive in!
 
-2. Exploring the Basics of Streamlit
-Streamlit works by running Python scripts. Unlike Flask or Django, there’s no need to deal with HTML or JavaScript. You write Python code, and Streamlit handles the rest. Let’s go over some basic features:
+# Exploring the Basics of Streamlit
 
-Displaying Text
+Streamlit works by running Python scripts. Unlike Python web frameworks like Flask or Django, there’s no need to deal with HTML or JavaScript. You write Python code, and Streamlit handles the rest. Let’s go over some basic features:
+
+## Displaying Text
+
 The st.write() function is the Swiss Army knife of Streamlit. You can use it to display text, data frames, charts, and more. For instance:
+
+Create a python file called app.py in any IDE you are comfortable with and copy the following:
 
 ```
 import streamlit as st
 st.write("Hello, Streamlit!")
 ```
 
-Adding Interactivity
+To run the file, use the following command in your terminal where you have installed Streamlit:
+
+```
+streamlit run app.py
+```
+
+This should open a browser with "Hello, Streamlit".
+
+## Adding Interactivity
+
 Streamlit lets you create widgets like sliders, text inputs, and buttons with just a line of code. For example:
 
 ```
@@ -84,7 +80,8 @@ st.write(f"You picked: {number}")
 
 ```
 
-Visualizing Data
+## Visualizing Data
+
 Streamlit integrates seamlessly with libraries like Matplotlib, Plotly, and Pandas. You can create beautiful, interactive visualizations directly in your app. For example:
 
 ```
@@ -108,8 +105,11 @@ st.plotly_chart(fig)
 
 ```
 
-3. Building a Researcher Profile Page
+# Building a Researcher Profile Page
+
 Now, let’s build something practical—a Researcher Profile Page. This app will showcase a researcher’s details, including their name, field of study, publications, and an interactive section for exploring their work.
+
+Create a new file called app_profile.py and copy the following code:
 
 Here’s the full code, and I’ll walk you through it step by step:
 
@@ -165,7 +165,8 @@ email = "jane.doe@example.com"
 st.write(f"You can reach {name} at {email}.")
 ```
 
-Breaking Down the App
+## Breaking Down the App
+
 Basic Inputs for Profile Details
 The st.text_input() widget lets users enter their name, field of study, and institution. These inputs update the displayed profile dynamically.
 
@@ -181,10 +182,9 @@ If the uploaded CSV contains a "Year" column, we use Streamlit’s built-in st.b
 Contact Information
 The app ends with a contact section, where researchers can share their email address.
 
-## Data Vis - STEM sections
+## STEM Sections
 
-Breaking Down the STEM Data Section
-Dummy Data Creation
+Create a new file called app_stem.py and copy the following code:
 
 I created three DataFrames (physics_data, astronomy_data, weather_data) with sample data that mirrors real-world research contexts.
 Physics data includes experimental results with energy levels and dates.
@@ -337,6 +337,8 @@ Sidebar Widgets for STEM Data
 Moved the dataset selection dropdown into the sidebar for better accessibility and space utilization.
 Consistent User Experience
 
+Create a new file called app_menu.py and copy the following code:
+
 Sidebar menus ensure users can switch between sections without scrolling.
 
 ```
@@ -485,6 +487,8 @@ Transform: Apply a data manipulation or transformation.
 Load: Display the final data, which could include visualizations or saving the results.
 We’ll build a pipeline for STEM researchers to upload a CSV, add a derived column, and view the updated dataset alongside a simple plot.
 
+Create a new file called app_pipeline.py and copy the following code:
+
 ```
 import streamlit as st
 import pandas as pd
@@ -589,5 +593,12 @@ This ETL pipeline example demonstrates how Streamlit can simplify the process of
 
 # Github Streamlit
 
+You will need a free GitHub account and a free Streamlit account to run you Streamlit app's on Streamlit cloud.
+
+Follow this guide to get it up and running:
+
+https://blog.streamlit.io/host-your-streamlit-app-for-free/
+
+![image](https://github.com/user-attachments/assets/c9136b96-9b8c-42e3-828c-92ddb7a2f685)
 
 
