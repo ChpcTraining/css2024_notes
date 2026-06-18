@@ -71,9 +71,17 @@ Using a package you should now be quite familiar with, let's grab some real-worl
 
 ```python
 import pandas as pd
+import requests
+
+# Necessary hack to get around the site's bot protection... for now!
+def read_from_url(url, match):
+    headers = {'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot@example.org)'}
+    res = requests.get(url, headers=headers)
+    tables = pd.read_html(res.text, match=match)
+    return tables[0]
 
 wiki_url = 'https://en.wikipedia.org/wiki/List_of_potentially_habitable_exoplanets'
-df = pd.read_html(wiki_url, match="Object")[0]
+df = read_from_url(wiki_url, "Object")
 print(df)
 ```
 

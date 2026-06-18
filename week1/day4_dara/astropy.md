@@ -121,7 +121,7 @@ fig, ax = plt.subplots(nrows=3, ncols=2)
 ax = ax.ravel()
 for k in range(len(image_concat)):
     ax[k].imshow(image_concat[k], cmap='gray')
-    ax[k].colorbar()
+    fig.colorbar(ax[k].get_images()[0], ax=ax[k])
     ax[k].set_title("Image #{}".format(k+1))
 
 fig.delaxes(ax[num_m13_images])
